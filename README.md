@@ -1,2 +1,4 @@
-# UploadFiles
-Project created as a basis for uploading files to Google Cloud Storage using PHP
+# Install
+`` composer require google/cloud-storage ``
+
+# Follow the steps [outlined here](https://cloud.google.com/php/)
