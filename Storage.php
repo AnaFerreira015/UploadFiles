@@ -17,8 +17,7 @@
     $stack->push($middleware);
 
     $client = new Client([
-        'handler' => $stack,
-        'auth' => getenv('GOOGLE_APPLICATION_CREDENTIALS')
+        'handler' => $stack
     ]);
 
     $httpHandler = HttpHandlerFactory::build($client);
@@ -31,15 +30,27 @@
             return $guzzleClient->send($request, $options);
         }
     ]);
-
-    // foreach ($storage->buckets() as $bucket) {
-    //     echo(' BUCKET: '.$bucket->name());
-    // }
-    $file = fopen('specs.png', 'r');
-    // echo('FILE SIZE: '.filesize('specs.png'));
+    $storage->registerStreamWrapper();
+    
     $bucket = $storage->bucket($bucketName);
-    // file_put_contents(`gs://${$bucketName}/Uploads/specs.png`, $file);
+    
+    $file = fopen('specs.png', 'r');
+
     $object = $bucket->upload($file, [
         'name' => 'Uploads/specs.png'
     ]);
+
+    $qualidade = 100;
+
+    $size = getimagesize('specs.png');
+    $tipo = $size[2];
+    echo $tipo;
+
+    if($tipo == 2){ // 2 é o JPG
+		$img = imagecreatefromjpeg($nome_img);	   
+    } if($tipo == 1){ // 1 é o GIF
+		$img = imagecreatefromgif($nome_img);	   
+    } if($tipo == 3){ // 3 é PNG
+		$img = imagecreatefrompng($nome_img);	   
+    }
 ?>
