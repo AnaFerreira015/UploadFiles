@@ -1,5 +1,6 @@
 {
     "require": {
-        "google/cloud-storage": "^1.18"
+        "google/cloud-storage": "^1.18",
+        "calcinai/php-imagick": "^0.1.2"
     }
 }

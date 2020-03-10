@@ -99,6 +99,13 @@ class ComposerStaticInit1b5fb54b6a3b63acbd4abe61e47ac8a5
                 0 => __DIR__ . '/..' . '/rize/uri-template/src',
             ),
         ),
+        'I' => 
+        array (
+            'Imagick' => 
+            array (
+                0 => __DIR__ . '/..' . '/calcinai/php-imagick/src',
+            ),
+        ),
     );
 
     public static function getInitializer(ClassLoader $loader)
