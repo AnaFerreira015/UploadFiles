@@ -40,17 +40,15 @@
         'name' => 'Uploads/specs.png'
     ]);
 
-    $qualidade = 100;
-
     $size = getimagesize('specs.png');
-    $tipo = $size[2];
-    echo $tipo;
+    $typeImage = $size[2];
+    echo $typeImage;
 
-    if($tipo == 2){ // 2 é o JPG
+    if($typeImage == 2){ // 2 é o JPG
 		$img = imagecreatefromjpeg($nome_img);	   
-    } if($tipo == 1){ // 1 é o GIF
+    } if($typeImage == 1){ // 1 é o GIF
 		$img = imagecreatefromgif($nome_img);	   
-    } if($tipo == 3){ // 3 é PNG
+    } if($typeImage == 3){ // 3 é PNG
 		$img = imagecreatefrompng($nome_img);	   
     }
 ?>
