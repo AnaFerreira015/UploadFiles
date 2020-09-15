@@ -8,7 +8,7 @@
     use GuzzleHttp\HandlerStack;
 
 
-    $bucketName = 'your-bucketName-here'; 
+    $bucketName = 'website-staging-258919.appspot.com'; 
 
     $gce = new GCECredentials();
     $middleware = new AuthTokenMiddleware($gce);
@@ -24,7 +24,7 @@
     $guzzleClient = new GuzzleHttp\Client(['verify' => false]);
 
     $storage = new StorageClient([
-        'projectId' => 'your-projectId-here',
+        'projectId' => 'website-staging-258919',
         'httpHandler' => $httpHandler,
         'httpHandler' => function ($request, $options = []) use ($guzzleClient) { 
             return $guzzleClient->send($request, $options);
@@ -34,23 +34,9 @@
     
     $bucket = $storage->bucket($bucketName);
     
-    $file = fopen('specs.png', 'r');
+    $file = fopen('paleta.png', 'r');
 
     $object = $bucket->upload($file, [
-        'name' => 'Uploads/specs.png'
+        'name' => 'paleta.png'
     ]);
-
-    $qualidade = 100;
-
-    $size = getimagesize('specs.png');
-    $tipo = $size[2];
-    echo $tipo;
-
-    if($tipo == 2){ // 2 é o JPG
-		$img = imagecreatefromjpeg($nome_img);	   
-    } if($tipo == 1){ // 1 é o GIF
-		$img = imagecreatefromgif($nome_img);	   
-    } if($tipo == 3){ // 3 é PNG
-		$img = imagecreatefrompng($nome_img);	   
-    }
 ?>
